@@ -7,11 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Icon from '@material-ui/core/Icon'
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -22,6 +18,10 @@ import Profile from './Components/Profile';
 import { Avatar } from '@mui/material';
 import UserService from '../Service/UserService';
 import { Button } from '@material-ui/core';
+
+
+
+import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 
 const drawerWidth = 240;
 
@@ -219,9 +219,7 @@ export default function Sidebar({ children }) {
                 : 'Account'}
           </Typography> */}
 
-
-
-          <Typography color="inherit">
+          <Typography color="inherit">  
             {
               accessToken ?
                <Button onClick={()=>{logoutFn()}}>Logout</Button>
@@ -256,6 +254,7 @@ export default function Sidebar({ children }) {
                   }}
                 >
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {/* <Icon>{text.icon}</Icon> */}
                 </ListItemIcon>
                 <ListItemText primary={text.name} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>

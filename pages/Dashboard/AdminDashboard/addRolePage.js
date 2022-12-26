@@ -98,14 +98,12 @@ const AddRolePage = () => {
                 <Card >
                     <CardContent>
                         <Typography variant="h5" style={{ textAlign: 'center' }}>Add New Role</Typography>
-
                         <form>
                             <TextField fullWidth label='Title' placeholder="Enter title" onChange={(e) => setRoleValue(e.target.value)} onKeyUp={() => { settitleErr(false) }} />
                             {titleErr ? <span style={{ color: 'red' }}>Please fill Title </span> : ''}
                             <TextField fullWidth label='Description' placeholder="Enter description" onChange={(e) => { setDescription(e.target.value) }} onKeyUp={() => { setDescriptionerr(false) }} />
-                            {descriptionErr ? <span style={{ color: 'red' }}>Please fill Title </span> : ''}
+                            {descriptionErr ? <span style={{ color: 'red' }}>Please fill Description </span> : ''}
                         </form>
-
                     </CardContent>
                     <CardActions>
                         <Button style={{ backgroundColor: 'silver' }} onClick={(e) => { addRole(e) }}>Add</Button>

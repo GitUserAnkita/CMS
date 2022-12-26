@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -31,21 +30,21 @@ export default function UserList() {
     setPage(0);
   };
 
-  const [open, setOpen] = useState(false);
-  const [query, setquery] = useState('')
-  const [search, setSearch] = useState("");
+  // const [open, setOpen] = useState(false);
+  // const [query, setquery] = useState('')
+  // const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [loading1, setLoading1] = useState(false);
   const [users, setUsers] = useState([]);
   const [roleArray, setRoleArray] = useState([]);
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [phone, setPhone] = useState();
-  const [roleValue, setRoleValue] = useState();
-  const [roleName, setRoleName] = useState();
-  const [userId, setUserId] = useState();
-  const [status, setStatus] = useState();
+  // const [name, setName] = useState();
+  // const [email, setEmail] = useState();
+  // const [phone, setPhone] = useState();
+  // const [roleValue, setRoleValue] = useState();
+  // const [roleName, setRoleName] = useState();
+  // const [userId, setUserId] = useState();
+  // const [status, setStatus] = useState();
 
   const [state, setstate] = useState({ query: '', list: [] })
 
@@ -59,9 +58,9 @@ export default function UserList() {
     route.push(`/Dashboard/AdminDashboard/EditUser/${id}`)
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   const getAlluser = async () => {
     setLoading(true);
@@ -112,14 +111,13 @@ export default function UserList() {
     })
   }
 
-  function isValidEmail(email) {
-    return /\S+@\S+\.\S+/.test(email);
-  }
-
   const handleChange = (e) => {
     const results = users.filter(post => {
+      var a ,b;
       if (e.target.value === "") return users
-      return post.name.toLowerCase().includes(e.target.value.toLowerCase()) 
+      a =  post.name.toLowerCase().includes(e.target.value.toLowerCase())
+      b =  post.email.toLowerCase().includes(e.target.value.toLowerCase())
+      return a || b;
     })
     setstate({
       query: e.target.value,
@@ -141,23 +139,16 @@ export default function UserList() {
               sx={{ mr: 2 }}
             >
               <Input
-                onChange={handleChange} value={state.query} type="search"
+                onChange={handleChange} value={state.query} type="search" placeholder='search here'
               />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {/* <Button onClick={handleSearch} style={{ color: 'black', fontWeight: '800' }}>Go</Button> */}
             </Typography>
-
-
-            {/* <Button variant="contained" style={{backgroundColor:'silver',color:"black",fontWeight:'800'}} onClick={()=>{adduserFn()}}>
-               Add New User
-             </Button> */}
           </Toolbar>
         </AppBar>
       </Box>
 
-      
-      
+    
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table stickyHeader aria-label="sticky table">
@@ -201,17 +192,14 @@ export default function UserList() {
                     <TableCell component="th" scope="row">
                       {row.name}
                     </TableCell>
-                    <TableCell >{row.phone}</TableCell>
-                    <TableCell >{row.email}</TableCell>
-                    <TableCell >{row?.role?.title}</TableCell>
-
-                    <TableCell >{row.status}</TableCell>
-                    <TableCell ><Button style={{ backgroundColor: 'silver', color: "black" }} onClick={() => { removeFn(row.id) }}>Remove</Button></TableCell>
-                    <TableCell >
-                      <Button style={{ backgroundColor: 'silver', color: "black" }} onClick={() => { handleClickOpen(row.id) }}>Edit</Button></TableCell>
-                    <TableCell >
-                      <Button style={{ backgroundColor: 'silver', color: "black" }} onClick={() => { changeStatus(row.id, row.status === 'verified' ? 'unverified' : 'verified') }}>
-                        {row.status === 'verified' ? 'unverified' : 'verified'}
+                    <TableCell>{row.phone}</TableCell>
+                    <TableCell>{row.email}</TableCell>
+                    <TableCell>{row?.role?.title}</TableCell>
+                    <TableCell>{row.status}</TableCell>
+                    <TableCell><Button style={{ backgroundColor: 'silver', color: "black" }} onClick={() => { removeFn(row.id) }}>Remove</Button></TableCell>
+                    <TableCell><Button style={{ backgroundColor: 'silver', color: "black" }} onClick={() => { handleClickOpen(row.id) }}>Edit</Button></TableCell>
+                    <TableCell><Button style={{ backgroundColor: 'silver', color: "black" }} onClick={() => { changeStatus(row.id, row.status === 'verified' ? 'unverified' : 'verified') }}>
+                         {row.status === 'verified' ? 'unverified' : 'verified'}
                       </Button>
                     </TableCell>
                   </TableRow>
