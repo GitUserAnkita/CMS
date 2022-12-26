@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) =>
     })
 );
 
-const addRolePage = () => {
+const AddRolePage = () => {
 
     const route = useRouter()
 
@@ -116,4 +116,4 @@ const addRolePage = () => {
     )
 }
 
-export default addRolePage
+export default AddRolePage
